@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.28307.1231
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "InsightlyAPIServices", "InsightlyPS\InsightlyAPIServices.csproj", "{70AD2765-1287-48CF-AF3B-921BEC27C01C}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InsightlyApiServices", "InsightlyApiServices\InsightlyApiServices.csproj", "{11D8F5F0-8093-4902-A252-40605E9A69AB}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -11,10 +11,10 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{70AD2765-1287-48CF-AF3B-921BEC27C01C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{70AD2765-1287-48CF-AF3B-921BEC27C01C}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{70AD2765-1287-48CF-AF3B-921BEC27C01C}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{70AD2765-1287-48CF-AF3B-921BEC27C01C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{11D8F5F0-8093-4902-A252-40605E9A69AB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{11D8F5F0-8093-4902-A252-40605E9A69AB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{11D8F5F0-8093-4902-A252-40605E9A69AB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{11D8F5F0-8093-4902-A252-40605E9A69AB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
