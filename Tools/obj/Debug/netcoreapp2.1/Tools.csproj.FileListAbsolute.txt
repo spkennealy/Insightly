@@ -1,0 +1,6 @@
+C:\Users\sean\Desktop\Repos\sean\InsightlyPS\Tools\bin\Debug\netcoreapp2.1\Tools.deps.json
+C:\Users\sean\Desktop\Repos\sean\InsightlyPS\Tools\bin\Debug\netcoreapp2.1\Tools.dll
+C:\Users\sean\Desktop\Repos\sean\InsightlyPS\Tools\obj\Debug\netcoreapp2.1\Tools.csprojAssemblyReference.cache
+C:\Users\sean\Desktop\Repos\sean\InsightlyPS\Tools\obj\Debug\netcoreapp2.1\Tools.csproj.CoreCompileInputs.cache
+C:\Users\sean\Desktop\Repos\sean\InsightlyPS\Tools\obj\Debug\netcoreapp2.1\Tools.AssemblyInfoInputs.cache
+C:\Users\sean\Desktop\Repos\sean\InsightlyPS\Tools\obj\Debug\netcoreapp2.1\Tools.AssemblyInfo.cs
