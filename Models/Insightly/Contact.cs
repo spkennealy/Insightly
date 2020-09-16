@@ -1,10 +1,10 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
-using System.Text;
 
 namespace Models.Insightly
 {
-    public class Contact : InsightlyObject
+    public class Contact : InsightlyCustomFieldObject
     {
         [JsonProperty("CONTACT_ID", NullValueHandling = NullValueHandling.Ignore)]
         public long? CONTACT_ID { get; set; }
