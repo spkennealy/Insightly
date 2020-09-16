@@ -1,7 +1,7 @@
 ﻿using Newtonsoft.Json;
 using System.Collections.Generic;
 
-namespace Models
+namespace Models.Insightly
 {
     public class InsightlyCustomFieldObject
     {
