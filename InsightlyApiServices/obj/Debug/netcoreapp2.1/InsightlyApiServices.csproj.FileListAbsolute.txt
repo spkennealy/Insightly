@@ -1,5 +1,9 @@
-C:\Users\sean\Desktop\Repos\sean\InsightlyPS\InsightlyApiServices\bin\Debug\netcoreapp2.1\InsightlyApiServices.deps.json
-C:\Users\sean\Desktop\Repos\sean\InsightlyPS\InsightlyApiServices\bin\Debug\netcoreapp2.1\InsightlyApiServices.dll
-C:\Users\sean\Desktop\Repos\sean\InsightlyPS\InsightlyApiServices\obj\Debug\netcoreapp2.1\InsightlyApiServices.csproj.CoreCompileInputs.cache
-C:\Users\sean\Desktop\Repos\sean\InsightlyPS\InsightlyApiServices\obj\Debug\netcoreapp2.1\InsightlyApiServices.AssemblyInfoInputs.cache
-C:\Users\sean\Desktop\Repos\sean\InsightlyPS\InsightlyApiServices\obj\Debug\netcoreapp2.1\InsightlyApiServices.AssemblyInfo.cs
+C:/Users/sean/Desktop/Repos/sean/InsightlyPS/InsightlyApiServices/bin/Debug/netcoreapp2.1/InsightlyApiServices.deps.json
+C:/Users/sean/Desktop/Repos/sean/InsightlyPS/InsightlyApiServices/bin/Debug/netcoreapp2.1/InsightlyApiServices.dll
+C:/Users/sean/Desktop/Repos/sean/InsightlyPS/InsightlyApiServices/obj/Debug/netcoreapp2.1/InsightlyApiServices.csproj.CoreCompileInputs.cache
+C:/Users/sean/Desktop/Repos/sean/InsightlyPS/InsightlyApiServices/obj/Debug/netcoreapp2.1/InsightlyApiServices.AssemblyInfoInputs.cache
+C:/Users/sean/Desktop/Repos/sean/InsightlyPS/InsightlyApiServices/obj/Debug/netcoreapp2.1/InsightlyApiServices.AssemblyInfo.cs
+/Users/seankennealy/Desktop/Home/Repos/Insightly/InsightlyApiServices/obj/Debug/netcoreapp2.1/InsightlyApiServices.csprojAssemblyReference.cache
+/Users/seankennealy/Desktop/Home/Repos/Insightly/InsightlyApiServices/obj/Debug/netcoreapp2.1/InsightlyApiServices.AssemblyInfoInputs.cache
+/Users/seankennealy/Desktop/Home/Repos/Insightly/InsightlyApiServices/obj/Debug/netcoreapp2.1/InsightlyApiServices.AssemblyInfo.cs
+/Users/seankennealy/Desktop/Home/Repos/Insightly/InsightlyApiServices/obj/Debug/netcoreapp2.1/InsightlyApiServices.csproj.CoreCompileInputs.cache
