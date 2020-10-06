@@ -17,5 +17,6 @@
   <ItemGroup>
     <Folder Include="Insightly\Interfaces\" />
     <Folder Include="Insightly\CustomFieldDetails\" />
+    <Folder Include="Shopify\" />
   </ItemGroup>
 </Project>
