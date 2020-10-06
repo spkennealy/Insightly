@@ -16,5 +16,6 @@
 
   <ItemGroup>
     <Folder Include="Insightly\Interfaces\" />
+    <Folder Include="Insightly\CustomFieldDetails\" />
   </ItemGroup>
 </Project>
