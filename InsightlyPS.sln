@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.28307.1231
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "InsightlyApiServices", "InsightlyApiServices\InsightlyApiServices.csproj", "{11D8F5F0-8093-4902-A252-40605E9A69AB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Services", "InsightlyApiServices\Services.csproj", "{11D8F5F0-8093-4902-A252-40605E9A69AB}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Tools", "Tools\Tools.csproj", "{6CBF98F1-11EC-47EB-9DF6-D71E5506C63D}"
 EndProject

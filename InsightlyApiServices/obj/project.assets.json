@@ -2,6 +2,15 @@
   "version": 3,
   "targets": {
     ".NETCoreApp,Version=v2.1": {
+      "Amazon.Lambda.Core/1.1.0": {
+        "type": "package",
+        "compile": {
+          "lib/netstandard2.0/Amazon.Lambda.Core.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/Amazon.Lambda.Core.dll": {}
+        }
+      },
       "Microsoft.NETCore.App/2.1.0": {
         "type": "package",
         "dependencies": {
@@ -216,10 +225,51 @@
         "runtime": {
           "lib/netstandard2.0/Newtonsoft.Json.dll": {}
         }
+      },
+      "Models/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v2.1",
+        "dependencies": {
+          "Newtonsoft.Json": "12.0.3"
+        },
+        "compile": {
+          "bin/placeholder/Models.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Models.dll": {}
+        }
+      },
+      "Tools/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v2.1",
+        "dependencies": {
+          "Amazon.Lambda.Core": "1.1.0"
+        },
+        "compile": {
+          "bin/placeholder/Tools.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Tools.dll": {}
+        }
       }
     }
   },
   "libraries": {
+    "Amazon.Lambda.Core/1.1.0": {
+      "sha512": "ueGId8b4DEHoVWkHDs3iAJH8IUSAUGu5AqkoI/Syl4RuByzik7lz9IjoImiGAlGhtsQV02MHNeTo04IFjS37gQ==",
+      "type": "package",
+      "path": "amazon.lambda.core/1.1.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "amazon.lambda.core.1.1.0.nupkg.sha512",
+        "amazon.lambda.core.nuspec",
+        "lib/netstandard1.3/Amazon.Lambda.Core.dll",
+        "lib/netstandard1.3/Amazon.Lambda.Core.xml",
+        "lib/netstandard2.0/Amazon.Lambda.Core.dll",
+        "lib/netstandard2.0/Amazon.Lambda.Core.xml"
+      ]
+    },
     "Microsoft.NETCore.App/2.1.0": {
       "sha512": "JNHhG+j5eIhG26+H721IDmwswGUznTwwSuJMFe/08h0X2YarHvA15sVAvUkA/2Sp3W0ENNm48t+J7KTPRqEpfA==",
       "type": "package",
@@ -720,12 +770,24 @@
         "newtonsoft.json.nuspec",
         "packageIcon.png"
       ]
+    },
+    "Models/1.0.0": {
+      "type": "project",
+      "path": "../Models/Models.csproj",
+      "msbuildProject": "../Models/Models.csproj"
+    },
+    "Tools/1.0.0": {
+      "type": "project",
+      "path": "../Tools/Tools.csproj",
+      "msbuildProject": "../Tools/Tools.csproj"
     }
   },
   "projectFileDependencyGroups": {
     ".NETCoreApp,Version=v2.1": [
       "Microsoft.NETCore.App >= 2.1.0",
-      "Newtonsoft.Json >= 12.0.3"
+      "Models >= 1.0.0",
+      "Newtonsoft.Json >= 12.0.3",
+      "Tools >= 1.0.0"
     ]
   },
   "packageFolders": {
@@ -735,9 +797,9 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/Users/seankennealy/Desktop/Home/Repos/Insightly/InsightlyApiServices/InsightlyApiServices.csproj",
-      "projectName": "InsightlyApiServices",
-      "projectPath": "/Users/seankennealy/Desktop/Home/Repos/Insightly/InsightlyApiServices/InsightlyApiServices.csproj",
+      "projectUniqueName": "/Users/seankennealy/Desktop/Home/Repos/Insightly/InsightlyApiServices/Services.csproj",
+      "projectName": "Services",
+      "projectPath": "/Users/seankennealy/Desktop/Home/Repos/Insightly/InsightlyApiServices/Services.csproj",
       "packagesPath": "/Users/seankennealy/.nuget/packages/",
       "outputPath": "/Users/seankennealy/Desktop/Home/Repos/Insightly/InsightlyApiServices/obj/",
       "projectStyle": "PackageReference",
@@ -755,7 +817,14 @@
       },
       "frameworks": {
         "netcoreapp2.1": {
-          "projectReferences": {}
+          "projectReferences": {
+            "/Users/seankennealy/Desktop/Home/Repos/Insightly/Models/Models.csproj": {
+              "projectPath": "/Users/seankennealy/Desktop/Home/Repos/Insightly/Models/Models.csproj"
+            },
+            "/Users/seankennealy/Desktop/Home/Repos/Insightly/Tools/Tools.csproj": {
+              "projectPath": "/Users/seankennealy/Desktop/Home/Repos/Insightly/Tools/Tools.csproj"
+            }
+          }
         }
       },
       "warningProperties": {

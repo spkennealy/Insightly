@@ -7,7 +7,7 @@ using System.Net.Http.Headers;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace InsightlyApiServices
+namespace Services.Insightly
 {
     public class ApiClient
     {
