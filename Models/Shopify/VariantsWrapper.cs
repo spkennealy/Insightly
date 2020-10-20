@@ -1,10 +1,11 @@
-﻿using System;
+﻿using System.Collections.Generic;
+using Newtonsoft.Json;
+
 namespace Models.Shopify
 {
     public class VariantsWrapper
     {
-        public VariantsWrapper()
-        {
-        }
+        [JsonProperty("variants")]
+        public List<Variant> VARIANTS { get; set; }
     }
 }
