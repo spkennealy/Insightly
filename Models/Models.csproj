@@ -19,5 +19,6 @@
     <Folder Include="Insightly\CustomFieldDetails\" />
     <Folder Include="Shopify\" />
     <Folder Include="ExchangeRatesApi\" />
+    <Folder Include="Submittable\" />
   </ItemGroup>
 </Project>
