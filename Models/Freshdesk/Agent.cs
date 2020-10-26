@@ -4,7 +4,7 @@ using Newtonsoft.Json;
 
 namespace Models.Freshdesk
 {
-    public class Agent : IFreshdeskObject
+    public class Agent : ICustomFieldObject
     {
         [JsonProperty("available", NullValueHandling = NullValueHandling.Ignore)]
         public bool AVAILABLE { get; set; }

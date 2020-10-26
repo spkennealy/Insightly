@@ -4,7 +4,7 @@ using Newtonsoft.Json;
 
 namespace Models.Freshdesk
 {
-    public class Company : IFreshdeskObject
+    public class Company : ICustomFieldObject
     {
         [JsonProperty("custom_fields", NullValueHandling = NullValueHandling.Ignore)]
         public Dictionary<string, object> CUSTOM_FIELDS { get; set; }
