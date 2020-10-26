@@ -1,9 +1,10 @@
 ﻿using System;
+using System.Collections.Generic;
 using Newtonsoft.Json;
 
 namespace Models.Freshdesk
 {
-    public class Agent : IFDObject
+    public class Agent : IFreshdeskObject
     {
         [JsonProperty("available", NullValueHandling = NullValueHandling.Ignore)]
         public bool AVAILABLE { get; set; }
@@ -45,7 +46,7 @@ namespace Models.Freshdesk
         public string TYPE { get; set; }
 
         [JsonProperty("contact", NullValueHandling = NullValueHandling.Ignore)]
-        public FDContact CONTACT { get; set; }
+        public Contact CONTACT { get; set; }
 
         [JsonProperty("custom_fields", NullValueHandling = NullValueHandling.Ignore)]
         public Dictionary<string, object> CUSTOM_FIELDS { get; set; }
