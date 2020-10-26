@@ -20,5 +20,6 @@
     <Folder Include="Shopify\" />
     <Folder Include="ExchangeRatesApi\" />
     <Folder Include="Submittable\" />
+    <Folder Include="Freshdesk\" />
   </ItemGroup>
 </Project>
