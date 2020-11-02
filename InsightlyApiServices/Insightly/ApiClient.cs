@@ -27,9 +27,7 @@ namespace Services.Insightly
             using (var client = new HttpClient())
             {
                 AddHeaders(client);
-                //logger.Log($"GET: {BaseUrl}/{url}\n");
-                //Debug.WriteLine($"GET: {BaseUrl}/{url}\n");
-                var response = await client.GetAsync($"{BaseUrl}/{url}");//.ConfigureAwait(false);
+                var response = await client.GetAsync($"{BaseUrl}/{url}");
                 var resultString = response.Content.ReadAsStringAsync().Result;
                 if (!response.IsSuccessStatusCode && response.StatusCode != System.Net.HttpStatusCode.TooManyRequests) Utils.LogMessage($"ERROR: {resultString}");
 
@@ -46,7 +44,6 @@ namespace Services.Insightly
             using (var client = new HttpClient())
             {
                 AddHeaders(client);
-                //logger.Log($"GET: {BaseUrl}/{url}\n");
                 var response = await client.GetAsync($"{BaseUrl}/{url}").ConfigureAwait(false);
                 var resultString = response.Content.ReadAsStringAsync().Result;
                 if (!response.IsSuccessStatusCode && response.StatusCode != System.Net.HttpStatusCode.TooManyRequests) Utils.LogMessage($"ERROR: {resultString}");
@@ -64,7 +61,6 @@ namespace Services.Insightly
             using (var client = new HttpClient())
             {
                 AddHeaders(client);
-                //logger.Log($"POST: {BaseUrl}/{url}\n");
                 var response = await client.PostAsync($"{BaseUrl}/{url}", GetBody(obj)).ConfigureAwait(false);
                 var resultString = response.Content.ReadAsStringAsync().Result;
                 if (!response.IsSuccessStatusCode && response.StatusCode != System.Net.HttpStatusCode.TooManyRequests) Utils.LogMessage($"ERROR: {resultString}");
@@ -82,7 +78,6 @@ namespace Services.Insightly
             using (var client = new HttpClient())
             {
                 AddHeaders(client);
-                //logger.Log($"PUT: {BaseUrl}/{url}\n");
                 var response = await client.PutAsync($"{BaseUrl}/{url}", GetBody(obj)).ConfigureAwait(false);
                 var resultString = response.Content.ReadAsStringAsync().Result;
                 if (!response.IsSuccessStatusCode && response.StatusCode != System.Net.HttpStatusCode.TooManyRequests) Utils.LogMessage($"ERROR: {resultString}");
@@ -100,7 +95,6 @@ namespace Services.Insightly
             using (var client = new HttpClient())
             {
                 AddHeaders(client);
-                //logger.Log($"DELETE: {BaseUrl}/{url}\n");
                 var response = await client.DeleteAsync($"{BaseUrl}/{url}").ConfigureAwait(false);
                 var resultString = response.Content.ReadAsStringAsync().Result;
                 if (!response.IsSuccessStatusCode && response.StatusCode != System.Net.HttpStatusCode.TooManyRequests) Utils.LogMessage($"ERROR: {resultString}");
