@@ -2,7 +2,7 @@
 
 namespace Models.Freshdesk
 {
-    public class FDTicketNotification
+    public class TicketNotification
     {
         [JsonProperty("type")]
         public string TYPE { get; set; }
