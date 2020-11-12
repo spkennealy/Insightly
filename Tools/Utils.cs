@@ -1,6 +1,5 @@
 ﻿using Amazon.Lambda.Core;
-using Common.Models.AWS;
-using Common.Models.Insightly;
+using Models.Insightly;
 using System;
 using System.Collections.Generic;
 using System.Collections.Specialized;
@@ -66,19 +65,19 @@ namespace Common.Tools
             return splitUrl[splitUrl.Length - 1];
         }
 
-        public static CustomField CreateCustomField(InsightlyObject obj, string fieldName, object fieldValue)
+        public static CustomField CreateCustomField(InsightlyCustomFieldObject obj, string fieldName, object fieldValue)
         {
             var customField = new CustomField() { FIELD_NAME = fieldName, FIELD_VALUE = fieldValue };
             obj.CUSTOMFIELDS.Add(customField);
             return customField;
         }
 
-        public static CustomField ExtractCustomField(InsightlyObject obj, string fieldName, object fieldValue = null)
+        public static CustomField ExtractCustomField(InsightlyCustomFieldObject obj, string fieldName, object fieldValue = null)
         {
             return obj?.CUSTOMFIELDS?.Where(cf => cf.FIELD_NAME == fieldName)?.FirstOrDefault() ?? CreateCustomField(obj, fieldName, fieldValue);
         }
 
-        public static object ExtractCustomFieldValue(InsightlyObject obj, string fieldName)
+        public static object ExtractCustomFieldValue(InsightlyCustomFieldObject obj, string fieldName)
         {
             return obj?.CUSTOMFIELDS?.Where(cf => cf.FIELD_NAME == fieldName)?.FirstOrDefault()?.FIELD_VALUE;
         }
@@ -91,7 +90,7 @@ namespace Common.Tools
             return project;
         }
 
-        public static double? SumNumericCustomFieldOnMultipleRecords(IEnumerable<InsightlyObject> insightlyObjects, string fieldName)
+        public static double? SumNumericCustomFieldOnMultipleRecords(IEnumerable<InsightlyCustomFieldObject> insightlyObjects, string fieldName)
         {
             if (insightlyObjects == null || insightlyObjects.Count() == 0 || string.IsNullOrWhiteSpace(fieldName)) return null;
             double? sum = 0;
