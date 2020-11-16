@@ -798,11 +798,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/Users/seankennealy/Desktop/Home/Repos/Insightly/InsightlyApiServices/Services.csproj",
+      "projectUniqueName": "/Users/seankennealy/Desktop/Repos/Insightly/InsightlyApiServices/Services.csproj",
       "projectName": "Services",
-      "projectPath": "/Users/seankennealy/Desktop/Home/Repos/Insightly/InsightlyApiServices/Services.csproj",
+      "projectPath": "/Users/seankennealy/Desktop/Repos/Insightly/InsightlyApiServices/Services.csproj",
       "packagesPath": "/Users/seankennealy/.nuget/packages/",
-      "outputPath": "/Users/seankennealy/Desktop/Home/Repos/Insightly/InsightlyApiServices/obj/",
+      "outputPath": "/Users/seankennealy/Desktop/Repos/Insightly/InsightlyApiServices/obj/",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "/usr/local/share/dotnet/sdk/NuGetFallbackFolder"
@@ -820,11 +820,11 @@
         "netcoreapp2.1": {
           "targetAlias": "netcoreapp2.1",
           "projectReferences": {
-            "/Users/seankennealy/Desktop/Home/Repos/Insightly/Models/Models.csproj": {
-              "projectPath": "/Users/seankennealy/Desktop/Home/Repos/Insightly/Models/Models.csproj"
+            "/Users/seankennealy/Desktop/Repos/Insightly/Models/Models.csproj": {
+              "projectPath": "/Users/seankennealy/Desktop/Repos/Insightly/Models/Models.csproj"
             },
-            "/Users/seankennealy/Desktop/Home/Repos/Insightly/Tools/Tools.csproj": {
-              "projectPath": "/Users/seankennealy/Desktop/Home/Repos/Insightly/Tools/Tools.csproj"
+            "/Users/seankennealy/Desktop/Repos/Insightly/Tools/Tools.csproj": {
+              "projectPath": "/Users/seankennealy/Desktop/Repos/Insightly/Tools/Tools.csproj"
             }
           }
         }
