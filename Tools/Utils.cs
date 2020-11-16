@@ -16,7 +16,7 @@ namespace Common.Tools
     {
         public static void LogMessage(string message)
         {
-            LambdaLogger.Log($"{message}");
+            LambdaLogger.Log(message);
             Debug.WriteLine(message);
         }
 
@@ -58,26 +58,27 @@ namespace Common.Tools
             var plainTextBytes = Encoding.UTF8.GetBytes(plainText);
             return Convert.ToBase64String(plainTextBytes);
         }
-        
+
         public static string ExtractIdFromUrl(string url)
         {
             var splitUrl = url.Split('/');
             return splitUrl[splitUrl.Length - 1];
         }
 
-        public static CustomField CreateCustomField(InsightlyCustomFieldObject obj, string fieldName, object fieldValue)
+        public static CustomField CreateCustomField(this InsightlyCustomFieldObject obj, string fieldName, object fieldValue)
         {
+            if (obj.CUSTOMFIELDS == null) obj.CUSTOMFIELDS = new List<CustomField>();
             var customField = new CustomField() { FIELD_NAME = fieldName, FIELD_VALUE = fieldValue };
             obj.CUSTOMFIELDS.Add(customField);
             return customField;
         }
 
-        public static CustomField ExtractCustomField(InsightlyCustomFieldObject obj, string fieldName, object fieldValue = null)
+        public static CustomField ExtractCustomField(this InsightlyCustomFieldObject obj, string fieldName, object fieldValue = null)
         {
             return obj?.CUSTOMFIELDS?.Where(cf => cf.FIELD_NAME == fieldName)?.FirstOrDefault() ?? CreateCustomField(obj, fieldName, fieldValue);
         }
 
-        public static object ExtractCustomFieldValue(InsightlyCustomFieldObject obj, string fieldName)
+        public static object ExtractCustomFieldValue(this InsightlyCustomFieldObject obj, string fieldName)
         {
             return obj?.CUSTOMFIELDS?.Where(cf => cf.FIELD_NAME == fieldName)?.FirstOrDefault()?.FIELD_VALUE;
         }
@@ -95,7 +96,7 @@ namespace Common.Tools
             if (insightlyObjects == null || insightlyObjects.Count() == 0 || string.IsNullOrWhiteSpace(fieldName)) return null;
             double? sum = 0;
 
-            foreach(var record in insightlyObjects)
+            foreach (var record in insightlyObjects)
             {
                 double fieldAmount = double.TryParse(ExtractCustomFieldValue(record, fieldName)?.ToString(), out double amt) ? amt : 0;
                 sum += fieldAmount;
@@ -106,7 +107,7 @@ namespace Common.Tools
 
         public static string GetStandardFieldLabel(string fieldName)
         {
-            switch(fieldName)
+            switch (fieldName)
             {
                 case "ACTUAL_CLOSE_DATE":
                     return "Actual Close Date";
@@ -147,39 +148,36 @@ namespace Common.Tools
                 case "RESPONSIBLE_USER_ID":
                     return "User Responsible ID";
                 default:
-                    return fieldName;    
+                    return fieldName;
             }
         }
 
-        public static long? ParseToLong(object value)
+        public static long? ParseToLong(this object value)
         {
             if (value == null) return null;
             var parsed = long.TryParse(value?.ToString(), out long parsedValue);
             return parsed ? (long?)parsedValue : null;
         }
 
-        public static int? ParseToInt(object value)
+        public static int? ParseToInt(this object value)
         {
             if (value == null) return null;
             var parsed = int.TryParse(value?.ToString(), out int parsedValue);
             return parsed ? (int?)parsedValue : null;
         }
 
-        public static double? ParseToDouble(object value)
+        public static double? ParseToDouble(this object value)
         {
             if (value == null) return null;
             var parsed = double.TryParse(value?.ToString(), out double parsedValue);
             return parsed ? (double?)parsedValue : null;
         }
 
-        public static NameValueCollection ParseUrlEncodedString(string value)
+        public static decimal? ParseToDecimal(this object value)
         {
-            return HttpUtility.ParseQueryString(value);
-        }
-
-        public static string UrlEncodedString(string value)
-        {
-            return HttpUtility.UrlEncode(value);
+            if (value == null) return null;
+            var parsed = decimal.TryParse(value?.ToString(), out decimal parsedValue);
+            return parsed ? (decimal?)parsedValue : null;
         }
 
         public static string ConvertStateAbrvToFullName(string state)
@@ -327,7 +325,7 @@ namespace Common.Tools
             return countryCode;
         }
 
-        public static bool IsNumber(object value)
+        public static bool IsNumber(this object value)
         {
             if (value == null) return false;
 
