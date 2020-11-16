@@ -29,6 +29,10 @@
         // SHARED FIELDS
         public const string DATE_CREATED_UTC = "DATE_CREATED_UTC";
         public const string DATE_UPDATED_UTC = "DATE_UPDATED_UTC";
+        public const string TAGS = "TAGS";
+        public const string OWNER_USER_ID = "OWNER_USER_ID";
+        public const string CREATED_USER_ID = "CREATED_USER_ID";
+        public const string RESPONSIBLE_USER_ID = "RESPONSIBLE_USER_ID";
 
         // LEAD FIELDS
         public const string LEAD_EMAIL = "EMAIL";
@@ -109,6 +113,13 @@
         public const string PRODUCT_SKU = "PRODUCT_SKU";
         public const string PRODUCT_ID = "PRODUCT_ID";
         public const string PRODUCT_FAMILY = "PRODUCT_FAMILY";
+
+        // EVENT FIELDS
+        public const string EVENT_TITLE = "TITLE";
+        public const string EVENT_DETAILS = "DETAILS";
+        public const string EVENT_ALL_DAY = "ALL_DAY";
+        public const string EVENT_START_DATE = "START_DATE_UTC";
+        public const string EVENT_END_DATE = "END_DATE_UTC";
 
         // QUOTE FIELDS
         public const string QUOTE_DRAFT = "Draft";
