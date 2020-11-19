@@ -32,7 +32,7 @@ namespace Services.Insightly
             while (results.Count() < totalResults || (totalResults == null && loopCount == 0))
             {
                 loopCount += 1;
-                var response = await apiClient.GetAllAsync<T>($"{objectUrl}/Search?field_name={field}&field_value={value}&count_total=true&top={Constants.TOP_500}&skip={skip}");
+                var response = await apiClient.GetResponseAsync($"{objectUrl}/Search?field_name={field}&field_value={value}&count_total=true&top={Constants.TOP_500}&skip={skip}");
 
                 if (response.IsSuccessStatusCode)
                 {
@@ -62,7 +62,7 @@ namespace Services.Insightly
             while (results.Count() < totalResults || (totalResults == null && loopCount == 0))
             {
                 loopCount += 1;
-                var response = await apiClient.GetAllAsync<T>($"{objectUrl}/Search?updated_after_utc={date}&count_total=true&top={Constants.TOP_500}&skip={skip}");
+                var response = await apiClient.GetResponseAsync($"{objectUrl}/Search?updated_after_utc={date}&count_total=true&top={Constants.TOP_500}&skip={skip}");
 
                 if (response.IsSuccessStatusCode)
                 {
@@ -92,7 +92,7 @@ namespace Services.Insightly
             while (results.Count() < totalResults || (totalResults == null && loopCount == 0))
             {
                 loopCount += 1;
-                var response = await apiClient.GetAllAsync<T>($"{objectUrl}?count_total=true&top={Constants.TOP_500}&skip={skip}");
+                var response = await apiClient.GetResponseAsync($"{objectUrl}?count_total=true&top={Constants.TOP_500}&skip={skip}");
 
                 if (response.IsSuccessStatusCode)
                 {
