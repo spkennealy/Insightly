@@ -1,11 +1,15 @@
 ﻿using Common.Tools;
+using HeyRed.Mime;
+using Models.Insightly;
 using Newtonsoft.Json;
+using RestSharp;
 using System;
 using System.Collections.Generic;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Threading;
 using System.Threading.Tasks;
+using Tools;
 
 namespace Services.Insightly
 {
@@ -21,36 +25,38 @@ namespace Services.Insightly
         {
             this.apiKey = apiKey;
         }
-        
-        public async Task<HttpResponseMessage> GetAllAsync<T>(string url)
+
+        public async Task<HttpResponseMessage> GetResponseAsync(string url)
         {
             using (var client = new HttpClient())
             {
                 AddHeaders(client);
                 var response = await client.GetAsync($"{BaseUrl}/{url}");
-                var resultString = response.Content.ReadAsStringAsync().Result;
-                if (!response.IsSuccessStatusCode && response.StatusCode != System.Net.HttpStatusCode.TooManyRequests) Utils.LogMessage($"ERROR: {resultString}");
-
-                if (response.StatusCode == System.Net.HttpStatusCode.TooManyRequests && !response.IsSuccessStatusCode)
+                if (!response.IsSuccessStatusCode)
                 {
-                    response = await Retry(() => client.GetAsync($"{BaseUrl}/{url}"), response?.Headers?.RetryAfter?.Delta); // ?? DEFAULT_DELAY);
+                    if (response.StatusCode == System.Net.HttpStatusCode.TooManyRequests)
+                    {
+                        response = await Retry(() => client.GetAsync($"{BaseUrl}/{url}"), response?.Headers?.RetryAfter?.Delta);
+                    }
+                    else
+                    {
+                        var resultString = response.Content.ReadAsStringAsync().Result;
+                        Utils.LogMessage($"ERROR: {resultString}");
+                    }
                 }
                 return response;
             }
         }
-        
+
         public async Task<T> GetAsync<T>(string url)
         {
             using (var client = new HttpClient())
             {
                 AddHeaders(client);
                 var response = await client.GetAsync($"{BaseUrl}/{url}").ConfigureAwait(false);
-                var resultString = response.Content.ReadAsStringAsync().Result;
-                if (!response.IsSuccessStatusCode && response.StatusCode != System.Net.HttpStatusCode.TooManyRequests) Utils.LogMessage($"ERROR: {resultString}");
-
-                if (response.StatusCode == System.Net.HttpStatusCode.TooManyRequests && !response.IsSuccessStatusCode)
+                if (!response.IsSuccessStatusCode && response.StatusCode == System.Net.HttpStatusCode.TooManyRequests)
                 {
-                    response = await Retry(() => client.GetAsync($"{BaseUrl}/{url}"), response?.Headers?.RetryAfter?.Delta); // ?? DEFAULT_DELAY);
+                    response = await Retry(() => client.GetAsync($"{BaseUrl}/{url}"), response?.Headers?.RetryAfter?.Delta);
                 }
                 return await GetResultAsync<T>(response);
             }
@@ -62,15 +68,28 @@ namespace Services.Insightly
             {
                 AddHeaders(client);
                 var response = await client.PostAsync($"{BaseUrl}/{url}", GetBody(obj)).ConfigureAwait(false);
-                var resultString = response.Content.ReadAsStringAsync().Result;
-                if (!response.IsSuccessStatusCode && response.StatusCode != System.Net.HttpStatusCode.TooManyRequests) Utils.LogMessage($"ERROR: {resultString}");
-
-                if (response.StatusCode == System.Net.HttpStatusCode.TooManyRequests && !response.IsSuccessStatusCode)
+                if (!response.IsSuccessStatusCode && response.StatusCode == System.Net.HttpStatusCode.TooManyRequests)
                 {
-                    response = await Retry(() => client.PostAsync($"{BaseUrl}/{url}", GetBody(obj)), response?.Headers?.RetryAfter?.Delta); // ?? DEFAULT_DELAY);
+                    response = await Retry(() => client.PostAsync($"{BaseUrl}/{url}", GetBody(obj)), response?.Headers?.RetryAfter?.Delta);
                 }
                 return await GetResultAsync<T>(response);
             }
+        }
+
+        public async Task<FileAttachment> PostFileAsync(string filePath, string fileName, string url)
+        {
+            var client = new RestClient($"{BaseUrl}/{url}");
+            client.Timeout = -1;
+            var request = new RestRequest(Method.POST);
+            request.AddHeader("Accept", "application/json, text/json");
+            request.AddHeader("Content-Type", "multipart/form-data");
+            request.AddHeader("Authorization", $"Basic {Utils.EncodeBase64(apiKey)}");
+            request.AddFile("file", filePath);
+            request.AddParameter("file_name", fileName);
+            request.AddParameter("content_type", MimeTypesMap.GetMimeType(fileName));
+            IRestResponse response = await client.ExecuteAsync(request);
+
+            return Serializer.FromJson<FileAttachment>(response.Content);
         }
 
         public async Task<T> PutAsync<T>(T obj, string url)
@@ -79,12 +98,9 @@ namespace Services.Insightly
             {
                 AddHeaders(client);
                 var response = await client.PutAsync($"{BaseUrl}/{url}", GetBody(obj)).ConfigureAwait(false);
-                var resultString = response.Content.ReadAsStringAsync().Result;
-                if (!response.IsSuccessStatusCode && response.StatusCode != System.Net.HttpStatusCode.TooManyRequests) Utils.LogMessage($"ERROR: {resultString}");
-
-                if (response.StatusCode == System.Net.HttpStatusCode.TooManyRequests && !response.IsSuccessStatusCode)
+                if (!response.IsSuccessStatusCode && response.StatusCode == System.Net.HttpStatusCode.TooManyRequests)
                 {
-                    response = await Retry(() => client.PutAsync($"{BaseUrl}/{url}", GetBody(obj)), response?.Headers?.RetryAfter?.Delta); // ?? DEFAULT_DELAY);
+                    response = await Retry(() => client.PutAsync($"{BaseUrl}/{url}", GetBody(obj)), response?.Headers?.RetryAfter?.Delta);
                 }
                 return await GetResultAsync<T>(response);
             }
@@ -96,12 +112,9 @@ namespace Services.Insightly
             {
                 AddHeaders(client);
                 var response = await client.DeleteAsync($"{BaseUrl}/{url}").ConfigureAwait(false);
-                var resultString = response.Content.ReadAsStringAsync().Result;
-                if (!response.IsSuccessStatusCode && response.StatusCode != System.Net.HttpStatusCode.TooManyRequests) Utils.LogMessage($"ERROR: {resultString}");
-
-                if (response.StatusCode == System.Net.HttpStatusCode.TooManyRequests && !response.IsSuccessStatusCode)
+                if (!response.IsSuccessStatusCode && response.StatusCode == System.Net.HttpStatusCode.TooManyRequests)
                 {
-                    response = await Retry(() => client.DeleteAsync($"{BaseUrl}/{url}"), response?.Headers?.RetryAfter?.Delta); // ?? DEFAULT_DELAY);
+                    response = await Retry(() => client.DeleteAsync($"{BaseUrl}/{url}"), response?.Headers?.RetryAfter?.Delta);
                 }
                 return response.IsSuccessStatusCode;
             }
@@ -117,6 +130,13 @@ namespace Services.Insightly
         {
             var body = new StringContent(JsonConvert.SerializeObject(obj));
             body.Headers.ContentType = new MediaTypeHeaderValue("application/json");
+            return body;
+        }
+
+        private ByteArrayContent GetFileBody(byte[] obj, string fileName)
+        {
+            var body = new ByteArrayContent(obj);
+            body.Headers.ContentType = new MediaTypeHeaderValue(MimeTypesMap.GetMimeType(fileName));
             return body;
         }
 
