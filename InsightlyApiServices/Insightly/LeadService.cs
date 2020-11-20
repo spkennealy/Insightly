@@ -121,6 +121,23 @@ namespace Services.Insightly
             }
         }
 
+        public Note AddNote(long? leadId, Note note)
+        {
+            try
+            {
+                if (leadId == null || note == null) return null;
+
+                note = apiClient.PostAsync(note, $"{objectUrl}/{leadId}/Notes").Result;
+                if (note != null) Utils.LogMessage($"Successfully created note #{note.NOTE_ID} for lead #{leadId}!");
+                return note;
+            }
+            catch (Exception ex)
+            {
+                Utils.LogError($"Adding note to lead #{leadId}: {ex.Message}");
+                throw;
+            }
+        }
+
         public static Lead CopyLead(Lead lead)
         {
             return new Lead() { LEAD_ID = lead.LEAD_ID, CUSTOMFIELDS = new List<CustomField>() };
