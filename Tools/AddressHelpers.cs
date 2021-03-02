@@ -132,5 +132,23 @@ namespace Common.Tools
 
             return null;
         }
+
+        public static string ConvertTwoLetterIsoToCountryName(this string countryCode)
+        {
+            if (countryCode.Length != 2)
+            {
+                return countryCode;
+            }
+
+            countryCode = countryCode.ToUpper();
+
+            CultureInfo[] cultures = CultureInfo.GetCultures(CultureTypes.SpecificCultures);
+            foreach (var region in cultures.Select(culture => new RegionInfo(culture.Name)).Where(region => string.Equals(region.TwoLetterISORegionName, countryCode, StringComparison.CurrentCultureIgnoreCase)))
+            {
+                return region.EnglishName;
+            }
+
+            return countryCode;
+        }
     }
 }
