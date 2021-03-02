@@ -41,5 +41,15 @@ namespace Tools
         {
             return Math.Abs((endDate.Month - startDate.Month) + 12 * (endDate.Year - startDate.Year));
         }
+
+        public static DateTime NthOf(this DateTime NextMonth, int Occurrence, DayOfWeek Day)
+        {
+            var firstDayOfNextMonth = new DateTime(NextMonth.Year, NextMonth.Month, 1);
+
+            var firstOccuranceDay = firstDayOfNextMonth.DayOfWeek == Day ? firstDayOfNextMonth : firstDayOfNextMonth.AddDays(Day - firstDayOfNextMonth.DayOfWeek);
+            // CurDate = 2011.10.1 Occurance = 1, Day = Friday >> 2011.09.30 FIX. 
+            if (firstOccuranceDay.Month < NextMonth.Month || firstOccuranceDay.Year < NextMonth.Year) Occurrence = Occurrence + 1;
+            return firstOccuranceDay.AddDays(7 * (Occurrence - 1));
+        }
     }
 }
