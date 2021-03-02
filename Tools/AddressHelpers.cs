@@ -114,5 +114,23 @@ namespace Common.Tools
                     return state;
             }
         }
+
+        public static string ConvertThreeLetterNameToCountryName(this string countryCode)
+        {
+            if (countryCode.Length != 3)
+            {
+                return countryCode;
+            }
+
+            countryCode = countryCode.ToUpper();
+
+            CultureInfo[] cultures = CultureInfo.GetCultures(CultureTypes.SpecificCultures);
+            foreach (var region in cultures.Select(culture => new RegionInfo(culture.Name)).Where(region => string.Equals(region.ThreeLetterISORegionName, countryCode, StringComparison.CurrentCultureIgnoreCase)))
+            {
+                return region.EnglishName;
+            }
+
+            return null;
+        }
     }
 }
