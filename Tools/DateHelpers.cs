@@ -36,5 +36,10 @@ namespace Tools
         {
             return date.Date.ToString().Split(' ').First();
         }
+
+        public static int MonthDifference(this DateTime startDate, DateTime endDate)
+        {
+            return Math.Abs((endDate.Month - startDate.Month) + 12 * (endDate.Year - startDate.Year));
+        }
     }
 }

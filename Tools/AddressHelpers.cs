@@ -2,7 +2,7 @@ using System;
 using System.Globalization;
 using System.Linq;
 
-namespace Common.Tools
+namespace Tools
 {
     public static class AddressHelpers
     {
