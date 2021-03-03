@@ -18,5 +18,10 @@ namespace Common.Tools
         {
             return obj?.CUSTOMFIELDS?.Where(cf => cf.FIELD_NAME == fieldName)?.FirstOrDefault() ?? CreateCustomField(obj, fieldName, fieldValue);
         }
+
+        public static object ExtractCustomFieldValue(this InsightlyCustomFieldObject obj, string fieldName)
+        {
+            return obj?.CUSTOMFIELDS?.Where(cf => cf.FIELD_NAME == fieldName)?.FirstOrDefault()?.FIELD_VALUE;
+        }
     }
 }
