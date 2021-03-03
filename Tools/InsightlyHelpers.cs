@@ -23,5 +23,13 @@ namespace Common.Tools
         {
             return obj?.CUSTOMFIELDS?.Where(cf => cf.FIELD_NAME == fieldName)?.FirstOrDefault()?.FIELD_VALUE;
         }
+
+        public static Project SetProjectCustomFieldValue(this Project project, string fieldName, object value)
+        {
+            if (project == null || fieldName == null) return project;
+            var field = ExtractCustomField(project, fieldName, value);
+            field.FIELD_VALUE = value;
+            return project;
+        }
     }
 }
