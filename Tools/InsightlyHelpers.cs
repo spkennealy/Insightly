@@ -13,5 +13,10 @@ namespace Common.Tools
             obj.CUSTOMFIELDS.Add(customField);
             return customField;
         }
+
+        public static CustomField ExtractCustomField(this InsightlyCustomFieldObject obj, string fieldName, object fieldValue = null)
+        {
+            return obj?.CUSTOMFIELDS?.Where(cf => cf.FIELD_NAME == fieldName)?.FirstOrDefault() ?? CreateCustomField(obj, fieldName, fieldValue);
+        }
     }
 }
