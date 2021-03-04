@@ -31,5 +31,19 @@ namespace Common.Tools
             field.FIELD_VALUE = value;
             return project;
         }
+
+        public static Link BuildLink(string objName, long? objId, string linkObjName, long? linkObjId)
+        {
+            if (objId == null || linkObjId == null) return null;
+            Utils.LogMessage($"Building link...");
+
+            return new Link()
+            {
+                OBJECT_NAME = objName,
+                OBJECT_ID = objId,
+                LINK_OBJECT_NAME = linkObjName,
+                LINK_OBJECT_ID = linkObjId
+            };
+        }
     }
 }
