@@ -28,5 +28,12 @@ namespace Common.Tools
             var parsed = double.TryParse(value?.ToString(), out double parsedValue);
             return parsed ? (double?)parsedValue : null;
         }
+
+        public static decimal? ParseToDecimal(this object value)
+        {
+            if (value == null) return null;
+            var parsed = decimal.TryParse(value?.ToString(), out decimal parsedValue);
+            return parsed ? (decimal?)parsedValue : null;
+        }
     }
 }
