@@ -98,5 +98,19 @@ namespace Common.Tools
             var splitUrl = url.Split('/');
             return splitUrl[splitUrl.Length - 1];
         }
+        
+        public static double? SumNumericCustomFieldOnMultipleRecords(this IEnumerable<InsightlyCustomFieldObject> insightlyObjects, string fieldName)
+        {
+            if (insightlyObjects == null || insightlyObjects.Count() == 0 || string.IsNullOrWhiteSpace(fieldName)) return null;
+            double? sum = 0;
+
+            foreach (var record in insightlyObjects)
+            {
+                double fieldAmount = double.TryParse(record.ExtractCustomFieldValue(fieldName)?.ToString(), out double amt) ? amt : 0;
+                sum += fieldAmount;
+            }
+
+            return sum;
+        }
     }
 }
