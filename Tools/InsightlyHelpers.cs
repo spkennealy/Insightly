@@ -45,5 +45,52 @@ namespace Common.Tools
                 LINK_OBJECT_ID = linkObjId
             };
         }
+
+        public static string GetStandardFieldLabel(string fieldName)
+        {
+            switch (fieldName)
+            {
+                case "ACTUAL_CLOSE_DATE":
+                    return "Actual Close Date";
+                case "BID_AMOUNT":
+                    return "Bid";
+                case "BID_CURRENCY":
+                    return "Bid Currency";
+                case "BID_DURATION":
+                    return "Bid Duration";
+                case "BID_TYPE":
+                    return "Bid Type";
+                case "CATEGORY_ID":
+                    return "Category ID";
+                case "OPPORTUNITY_STATE":
+                    return "Current State";
+                case "LAST_ACTIVITY_DATE_UTC":
+                    return "Date of Last Activity UTC";
+                case "NEXT_ACTIVITY_DATE_UTC":
+                    return "Date of Next Activity UTC";
+                case "OPPORTUNITY_DETAILS":
+                    return "Description";
+                case "FORECAST_CLOSE_DATE":
+                    return "Forecast Close Date UTC";
+                case "DATE_CREATED_UTC":
+                    return "Opportunity Created";
+                case "OPPORTUNITY_NAME":
+                    return "Opportunity Name";
+                case "ORGANISATION_ID":
+                    return "Organization ID";
+                case "PIPELINE_ID":
+                    return "Pipeline ID";
+                case "PROBABILITY":
+                    return "Probability Of Winning";
+                case "OPPORTUNITY_ID":
+                    return "Record ID";
+                case "STAGE_ID":
+                    return "Stage ID";
+                case "RESPONSIBLE_USER_ID":
+                    return "User Responsible ID";
+                default:
+                    return fieldName;
+            }
+        }
     }
 }
