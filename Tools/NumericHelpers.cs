@@ -21,5 +21,12 @@ namespace Common.Tools
             var parsed = int.TryParse(value?.ToString(), out int parsedValue);
             return parsed ? (int?)parsedValue : null;
         }
+
+        public static double? ParseToDouble(this object value)
+        {
+            if (value == null) return null;
+            var parsed = double.TryParse(value?.ToString(), out double parsedValue);
+            return parsed ? (double?)parsedValue : null;
+        }
     }
 }
