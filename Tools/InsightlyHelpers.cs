@@ -92,5 +92,11 @@ namespace Common.Tools
                     return fieldName;
             }
         }
+
+        public static string ExtractIdFromUrl(this string url)
+        {
+            var splitUrl = url.Split('/');
+            return splitUrl[splitUrl.Length - 1];
+        }
     }
 }
