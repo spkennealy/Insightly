@@ -14,5 +14,12 @@ namespace Common.Tools
             var parsed = long.TryParse(value?.ToString(), out long parsedValue);
             return parsed ? (long?)parsedValue : null;
         }
+
+        public static int? ParseToInt(this object value)
+        {
+            if (value == null) return null;
+            var parsed = int.TryParse(value?.ToString(), out int parsedValue);
+            return parsed ? (int?)parsedValue : null;
+        }
     }
 }
