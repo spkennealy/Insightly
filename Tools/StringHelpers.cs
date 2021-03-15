@@ -9,6 +9,15 @@ namespace Tools
         {
             return Regex.Replace(htmlString, @"<(.|\n)*?>", string.Empty);
         }
+        
+        public static string ReSizeTextField(this string text, int maxLenth)
+        {
+            if (text.Length > maxLenth)
+            {
+                text = text.Substring(0, maxLenth);
+            }
+            return text;
+        }
 
         public static string ReSizeForMultiLineText(this string text)
         {
