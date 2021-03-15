@@ -52,5 +52,12 @@ namespace Common.Tools
                     || value is double
                     || value is decimal;
         }
+
+        public static decimal ConvertDoubleToDecimal(this double? value, decimal defaultValue = 0)
+        {
+            if (value == null) return defaultValue;
+            var converted = value.ParseToDecimal();
+            return converted != null ? (decimal)converted : defaultValue;
+        }
     }
 }
