@@ -59,5 +59,12 @@ namespace Common.Tools
             var converted = value.ParseToDecimal();
             return converted != null ? (decimal)converted : defaultValue;
         }
+
+        public static double ConvertDecimalToDouble(this decimal? value, double defaultValue = 0)
+        {
+            if (value == null) return defaultValue;
+            var converted = value.ParseToDouble();
+            return converted != null ? (double)converted : defaultValue;
+        }
     }
 }
