@@ -35,5 +35,22 @@ namespace Common.Tools
             var parsed = decimal.TryParse(value?.ToString(), out decimal parsedValue);
             return parsed ? (decimal?)parsedValue : null;
         }
+
+        public static bool IsANumber(this object value)
+        {
+            if (value == null) return false;
+
+            return value is sbyte
+                    || value is byte
+                    || value is short
+                    || value is ushort
+                    || value is int
+                    || value is uint
+                    || value is long
+                    || value is ulong
+                    || value is float
+                    || value is double
+                    || value is decimal;
+        }
     }
 }
