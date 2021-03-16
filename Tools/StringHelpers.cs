@@ -85,5 +85,33 @@ namespace Tools
 
             return fileName.ReplaceSpacesWithUnderscores();
         }
+
+        public static void SplitFullNameToFirstAndLast(string fullName, out string firstName, out string lastName)
+        {
+            firstName = null;
+            lastName = null;
+            if (string.IsNullOrWhiteSpace(fullName))
+            {
+                return;
+            }
+
+            fullName = fullName.Trim();
+            fullName = Regex.Replace(fullName, @"\s+", " "); // Converting all spaces to one space only if any	        
+            string[] nameTokens = fullName.Split(nameDelimiterArray);
+
+            firstName = nameTokens[0];
+            for (int i = 1; i < nameTokens.Length; i++)
+            {
+                if (nameTokens.Length > 2 && i == 1)
+                {
+                    firstName = firstName + " " + nameTokens[i];
+                    continue;
+                }
+
+                lastName = lastName + " " + nameTokens[i];
+            }
+            firstName = firstName?.Trim();
+            lastName = lastName?.Trim();
+        }
     }
 }
