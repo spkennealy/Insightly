@@ -113,5 +113,13 @@ namespace Tools
             firstName = firstName?.Trim();
             lastName = lastName?.Trim();
         }
+
+        public static string BuildFunctionClock(this TimeSpan timeSpan)
+        {
+            string totalHours = timeSpan.Hours > 9 ? timeSpan.Hours.ToString() : $"0{timeSpan.Hours}";
+            string totalMin = timeSpan.Minutes > 9 ? timeSpan.Minutes.ToString() : $"0{timeSpan.Minutes}";
+            string totalSec = timeSpan.Seconds > 9 ? timeSpan.Seconds.ToString() : $"0{timeSpan.Seconds}";
+            return $"{totalHours}:{totalMin}:{totalSec}";
+        }
     }
 }
