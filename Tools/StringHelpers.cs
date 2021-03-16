@@ -43,6 +43,12 @@ namespace Tools
             return text.Replace(' ', '_');
         }
 
+        public static string ReplaceSpacesWithUnderscoresAndRemoveSpecialCharacters(this string text)
+        {
+            if (string.IsNullOrWhiteSpace(text)) return text;
+            return Regex.Replace(text.Replace(' ', '_'), "[^\\w\\._]", string.Empty);
+        }
+
         public static string CapitalizeWord(this string word)
         {
             if (string.IsNullOrWhiteSpace(word)) return word;
