@@ -53,6 +53,16 @@ namespace Common.Tools
             return new GatewayResponse(message, headers, statusCode);
         }
 
+        public static string EndFunctionSuccessfullyWithClock(DateTime startTime)
+        {
+            var endTime = DateTime.UtcNow;
+            var totalTime = endTime - startTime;
+            LogMessage($"Function End Time (UTC): {endTime}");
+            LogMessage($"Total Function Runtime (hour:min:sec): {totalTime.BuildFunctionClock()}");
+            EndFunctionSuccessfully("Done!");
+            return "Success!";
+        }
+
         public static string EncodeBase64(string plainText)
         {
             var plainTextBytes = Encoding.UTF8.GetBytes(plainText);
