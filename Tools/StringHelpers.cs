@@ -121,5 +121,10 @@ namespace Tools
             string totalSec = timeSpan.Seconds > 9 ? timeSpan.Seconds.ToString() : $"0{timeSpan.Seconds}";
             return $"{totalHours}:{totalMin}:{totalSec}";
         }
+
+        public static string ExtractObjectName(this string objectUrl)
+        {
+            return string.Join(" ", objectUrl?.Substring(0, objectUrl.Length - 3)?.Split('_'));
+        }
     }
 }
