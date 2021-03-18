@@ -126,5 +126,10 @@ namespace Tools
         {
             return string.Join(" ", objectUrl?.Substring(0, objectUrl.Length - 3)?.Split('_'));
         }
+
+        public static bool IsDifferentString(this string value1, string value2)
+        {
+            return value1?.ToLower() != value2?.ToLower();
+        }
     }
 }
