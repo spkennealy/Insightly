@@ -98,5 +98,10 @@ namespace Common.Tools
 
             return null;
         }
+
+        public static bool ContainsValues(this IEnumerable<dynamic> records)
+        {
+            return records != null && records.Count() > 0;
+        }
     }
 }
