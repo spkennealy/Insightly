@@ -103,5 +103,10 @@ namespace Common.Tools
         {
             return records != null && records.Count() > 0;
         }
+
+        public static bool IsDifferentExcludingCase(this object value1, object value2)
+        {
+            return value1?.ToString()?.ToLower() != value2?.ToString()?.ToLower();
+        }
     }
 }
