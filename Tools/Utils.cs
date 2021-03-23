@@ -108,5 +108,10 @@ namespace Common.Tools
         {
             return value1?.ToString()?.ToLower() != value2?.ToString()?.ToLower();
         }
+
+        public static bool IsDifferent(this object value1, object value2)
+        {
+            return value1?.ToString() != value2?.ToString();
+        }
     }
 }
